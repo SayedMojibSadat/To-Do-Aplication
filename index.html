@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List | CodeForge</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="asset/color/color.css" />
+</head>
+
+<body>
+    <div id="asid" class="mainShapes">
+        <div id="setting">
+            ≡
+        </div>
+
+        <div id="userInformation">
+            <div id="userPhoto">
+
+            </div>
+
+            <div id="userName">
+                سیدمجیب سادات
+            </div>
+        </div>
+
+        <div id="prioritys">
+            <div id="levelOne" class="priorityLevel">
+
+                <div id="l0Color" class="colors l0Color">A</div>
+
+                <div id="l0RText" class="texts l0Color">همه</div>
+
+            </div>
+
+            <div id="levelOne" class="priorityLevel">
+
+                <div id="l1Color" class="colors l1Color">1</div>
+
+                <div id="l1RText" class="texts l1Color">درجه اول</div>
+
+            </div>
+
+            <div id="levelTwo" class="priorityLevel">
+
+                <div id="l2Color" class="colors l2Color">2</div>
+
+                <div id="l2RText" class="texts l2Color">درجه دوم</div>
+
+            </div>
+
+            <div id="levelThree" class="priorityLevel">
+
+                <div id="l3Color" class="colors l3Color">3</div>
+
+                <div id="l3RText" class="texts l3Color">درجه سوم</div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="main" class="mainShapes">
+
+        <div id="mainHead">
+
+            <div class="containers" id="nameTypeContainer">
+                <input type="text" id="nameInput" placeholder="نام وظیفه را وارد کنید.." />
+                <select id="levelSelect">
+                    <option id="levelPlaceholder" value="">سطح را انتخاب کنید..</option>
+                    <option id="level1" value="1">درجه اول</option>
+                    <option id="level2" value="2">درجه دوم</option>
+                    <option id="level3" value="3">درجه سوم</option>
+                </select>
+            </div>
+
+            <div class="containers" id="dateTimeContainer">
+                <input type="date" id="setDate" />
+                <input type="time" id="setTime" />
+            </div>
+
+            <div class="containers" id="discribtionContainer">
+                <textarea placeholder="توضیح را وارد کنید.." id="inputDiscribtion"></textarea>
+            </div>
+
+            <div class="containers" id="buttonContainer">
+                <button id="addButton" class="buttons">اضافه کردن</button>
+                <button id="deleteButton" class="buttons">حذف همه</button>
+            </div>
+        </div>
+
+        <div id="mainList">
+            
+        </div>
+
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
