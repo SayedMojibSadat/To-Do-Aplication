@@ -159,10 +159,10 @@ body {
     padding: 1rem;
     padding-top: 2rem;
 
-    overflow-y: auto;    /* اسکرول عمودی */
+    overflow-y: auto; 
     overflow-x: hidden;
 
-    flex-shrink: 0;      /* خیلی مهم: جلوی فشار آوردن روی کارت‌ها رو می‌گیره */
+    flex-shrink: 0; 
 }
 
 
