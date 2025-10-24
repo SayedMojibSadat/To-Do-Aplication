@@ -100,6 +100,7 @@ const cartRenderer = (task) => {
   addShowDiscribtionButton();
 };
 
+
 addCartButton.addEventListener("click", () => {
   addCartButton.innerHTML = "اضافه کردن";
   addToArray();
@@ -160,3 +161,27 @@ const addShowDiscribtionButton = () => {
     });
   });
 };
+
+
+
+const filterByLevel = (level) => {
+  if (level === "A") {
+    cartRenderer(outputCarts);
+  } else {
+    let filtered = outputCarts.filter((cart) => cart.level == level);
+    cartRenderer(filtered);
+  }
+};
+
+
+
+document.querySelectorAll(".priorityLevel").forEach((item) => {
+  item.addEventListener("click", () => {
+    let text = item.querySelector(".texts").innerText;
+
+    if (text === "همه") filterByLevel("A");
+    else if (text === "درجه اول") filterByLevel(1);
+    else if (text === "درجه دوم") filterByLevel(2);
+    else if (text === "درجه سوم") filterByLevel(3);
+  });
+});
