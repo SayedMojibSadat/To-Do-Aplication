@@ -54,7 +54,7 @@ const cartRenderer = (task) => {
         : element.level == 3
         ? (cartLC = "l3Color")
         : (cartLC = "l0Color");
-        return `
+      return `
       <div class="cards">
       <div class="cartDetails">
 
@@ -80,7 +80,7 @@ const cartRenderer = (task) => {
       </div>
 
       <div class="showDiscribtionContainer">
-        <button class="showDiscribtionButton">◢</button>
+        <button class="showDiscribtionButton">▾</button>
       </div>
 
         </div>
@@ -109,7 +109,6 @@ deleteAllCartButton.addEventListener("click", () => {
   outputCarts = [];
   cartRenderer(outputCarts);
 });
-
 
 const deleteCart = (index) => {
   outputCarts.splice(index, 1);
@@ -143,8 +142,6 @@ const addEditCartButton = () => {
   });
 };
 
-
-
 const addShowDiscribtionButton = () => {
   let showButtons = document.querySelectorAll(".showDiscribtionButton");
 
@@ -152,13 +149,13 @@ const addShowDiscribtionButton = () => {
     button.addEventListener("click", () => {
       let card = button.closest(".cards");
       let discribtion = card.querySelector(".outputDiscribtion");
-      
+
       if (discribtion.style.display === "block") {
         discribtion.style.display = "none";
-        document.querySelector('.showDiscribtionButton').innerHTML = '▾'
+        document.querySelector(".showDiscribtionButton").innerHTML = "▾";
       } else {
         discribtion.style.display = "block";
-        document.querySelector('.showDiscribtionButton').innerHTML = '▴'
+        document.querySelector(".showDiscribtionButton").innerHTML = "▴";
       }
     });
   });
