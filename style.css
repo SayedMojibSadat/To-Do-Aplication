@@ -43,6 +43,7 @@ body {
     justify-content: start;
     font-size: 3.5rem;
     font-weight: bold;
+    cursor: pointer;
 }
 
 #prioritys{
@@ -377,4 +378,30 @@ body {
     outline: 0;
     height: auto;
     width: auto;
+}
+
+.settingSection{
+    position:absolute;
+    height: 80vh;
+    width: 80vw;
+    background-color: var(--settingColor);
+    backdrop-filter: blur(1rem);
+    border: 3px solid var(--settingBorder);
+    border-radius: 2rem;
+    padding: 1rem;
+    display: none;
+}
+
+#closeSettingButton{
+    position: fixed;
+    cursor: pointer;
+    background-color: var(--settingBorder);
+    color: var(--color2);
+    height: 1.5rem;
+    width: 1.5rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5rem;
 }

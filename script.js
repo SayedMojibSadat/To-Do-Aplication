@@ -185,3 +185,17 @@ document.querySelectorAll(".priorityLevel").forEach((item) => {
     else if (text === "درجه سوم") filterByLevel(3);
   });
 });
+
+
+let settingButton = document.querySelector('#setting')
+let settingSection = document.querySelector('.settingSection')
+
+settingButton .addEventListener('click', () => {
+  settingSection.style.display = 'inline'
+})
+
+let closeSettingButton = document.querySelector('#closeSettingButton')
+
+closeSettingButton.addEventListener('click', () => {
+  settingSection.style.display = 'none'
+})
