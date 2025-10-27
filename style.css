@@ -382,8 +382,8 @@ body {
 
 .settingSection{
     position:absolute;
-    height: 80vh;
-    width: 80vw;
+    height: 90vh;
+    width: 35vw;
     background-color: var(--settingColor);
     backdrop-filter: blur(1rem);
     border: 3px solid var(--settingBorder);
@@ -405,3 +405,37 @@ body {
     justify-content: center;
     border-radius: 5rem;
 }
+
+#settingMain{
+    padding: 2.5rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.settingInputs{
+    height: 3rem;
+    width: 15rem;
+    border-radius: 2rem;
+    outline: 0;
+    border: 0;
+    background-color: var(--color4);
+    color: var(--color2);
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.settingInputs::placeholder{
+    color: var(--color2);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.settingLabels{
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: var(--color4);
+}
+
