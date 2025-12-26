@@ -93,7 +93,7 @@
         </div>
 
         <div id="mainList">
-            
+
         </div>
 
     </div>
@@ -101,8 +101,21 @@
     <div class="settingSection">
         <h3 id="closeSettingButton">×</h3>
         <div id="settingMain">
-            <label class="settingLabels">نام:</label>
+            <label class="settingLabel">کاربر</label>
+            <label for="fileInput" id="addUserPhotoBtn">+</label>
+            <input type="file" id="fileInput" hidden />
             <input id="userNameInput" class="settingInputs" placeholder="نام کامل خود را وارد کنید.." type="text" />
+            <label class="settingLabel">اولویت ها</label>
+            <input id="levelOneInput" class="settingInputs" placeholder="نام اولویت درجه اول.." type="text" />
+            <input id="levelTwoInput" class="settingInputs" placeholder="نام اولویت درجه دوم" type="text" />
+            <input id="levelThreeInput" class="settingInputs" placeholder="نام اولویت درجه سوم" type="text" />
+            <label class="settingLabel">طرح زمینه</label>
+            <select class="settingInputs">
+                <option><span class="colorMode"></span>Light</option>
+                <option><span class="colorMode"></span>Dark</option>
+            </select>
+
+            <button class="settingInputs" id="settingDoneButton">انجام شد</button>
         </div>
     </div>
 

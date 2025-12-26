@@ -6,6 +6,15 @@ let inputCartDiscribtion = document.querySelector("#inputDiscribtion");
 let addCartButton = document.querySelector("#addButton");
 let deleteAllCartButton = document.querySelector("#deleteButton");
 let outputCartsPossition = document.querySelector("#mainList");
+let settingDoneButton = document.querySelector("#settingDoneButton");
+let userNameInput = document.querySelector("#userNameInput");
+let userNameOutput = document.querySelector("#userName");
+let levelOneOutput = document.querySelector("#l1RText");
+let levelTwoOutput = document.querySelector("#l2RText");
+let levelThreeOutput = document.querySelector("#l3RText");
+let levelOneInput = document.querySelector("#levelOneInput");
+let levelTwoInput = document.querySelector("#levelTwoInput");
+let levelThreeInput = document.querySelector("#levelThreeInput");
 
 let outputCarts = [];
 let editIndex = null;
@@ -48,58 +57,71 @@ const cartRenderer = (task) => {
   let rows = task
     .map((element, index) => {
       element.level == 1
-        ? (cartLC = "l1Color")
-        : element.level == 2
-        ? (cartLC = "l2Color")
-        : element.level == 3
-        ? (cartLC = "l3Color")
-        : (cartLC = "l0Color");
+      ? (cartLC = "l1Color")
+      : element.level == 2
+      ? (cartLC = "l2Color")
+      : element.level == 3
+      ? (cartLC = "l3Color")
+      : (cartLC = "l0Color");
       return `
       <div class="cards">
       <div class="cartDetails">
-
-        <div id="colorContainer">
-          <div id="${cartLC}" class="colors ${cartLC}">${element.level}</div>
-        </div>
-
+      
+      <div id="colorContainer">
+      <div id="${cartLC}" class="colors ${cartLC}">${element.level}</div>
+      </div>
+      
       <div id="cartsName" class="nameDateTime">
-        ${element.name}
+      ${element.name}
       </div>
-
+      
       <div id="cartsDate" class="nameDateTime">
-        ${element.date}
+      ${element.date}
       </div>
-
+      
       <div id="cartsTime" class="nameDateTime">
-        ${element.time}
+      ${element.time}
       </div>
-
+      
       <div class="cartsButton">
-        <button id="editCart" class="editDeleteCarts editCart" data-index="${index}">ادیت</button>
-        <button id="deleteCart" class="editDeleteCarts deleteCart" data-index="${index}">حذف</button>
+      <button id="editCart" class="editDeleteCarts editCart" data-index="${index}">ادیت</button>
+      <button id="deleteCart" class="editDeleteCarts deleteCart" data-index="${index}">حذف</button>
       </div>
-
+      
       <div class="showDiscribtionContainer">
-        <button class="showDiscribtionButton">▾</button>
+      <button class="showDiscribtionButton">▾</button>
       </div>
-
-        </div>
-        
+      
+      </div>
+      
       <div class="outputDiscribtion">
-      ${inputCartDiscribtion.value}
+      ${element.discribtion}
       </div>
       
       </div>
       `;
     })
     .join("");
-
-  outputCartsPossition.innerHTML = rows;
-  addDeleteCartButton();
-  addEditCartButton();
-  addShowDiscribtionButton();
+    
+    outputCartsPossition.innerHTML = rows;
+    addDeleteCartButton();
+    addEditCartButton();
+    addShowDiscribtionButton();
+  };
+  
+  const settingRenderer = () => {
+    userNameInput.value = userNameOutput.innerText;
+  levelOneInput.value = levelOneOutput.innerText;
+  levelTwoInput.value = levelTwoOutput.innerText;
+  levelThreeInput.value = levelThreeOutput.innerText;
 };
 
+const asidRenderer = () => {
+  userNameOutput.innerText = userNameInput.value;
+  levelOneOutput.innerText = levelOneInput.value;
+  levelTwoOutput.innerText = levelTwoInput.value;
+  levelThreeOutput.innerText = levelThreeInput.value;
+};
 
 addCartButton.addEventListener("click", () => {
   addCartButton.innerHTML = "اضافه کردن";
@@ -107,8 +129,11 @@ addCartButton.addEventListener("click", () => {
 });
 
 deleteAllCartButton.addEventListener("click", () => {
-  outputCarts = [];
-  cartRenderer(outputCarts);
+  let deleteAllCartConfirm = confirm('مطمئن هستید؟ آیا می خواهید تمام کارت وظایف را حذف کنید؟')
+  if(deleteAllCartConfirm){
+    outputCarts = [];
+    cartRenderer(outputCarts);
+  }
 });
 
 const deleteCart = (index) => {
@@ -145,24 +170,22 @@ const addEditCartButton = () => {
 
 const addShowDiscribtionButton = () => {
   let showButtons = document.querySelectorAll(".showDiscribtionButton");
-
+  
   showButtons.forEach((button) => {
     button.addEventListener("click", () => {
       let card = button.closest(".cards");
       let discribtion = card.querySelector(".outputDiscribtion");
-
+      
       if (discribtion.style.display === "block") {
         discribtion.style.display = "none";
-        document.querySelector(".showDiscribtionButton").innerHTML = "▾";
+        button.innerHTML = "▾";
       } else {
         discribtion.style.display = "block";
-        document.querySelector(".showDiscribtionButton").innerHTML = "▴";
+        button.innerHTML = "▴";
       }
     });
   });
 };
-
-
 
 const filterByLevel = (level) => {
   if (level === "A") {
@@ -173,29 +196,44 @@ const filterByLevel = (level) => {
   }
 };
 
-
-
 document.querySelectorAll(".priorityLevel").forEach((item) => {
   item.addEventListener("click", () => {
     let text = item.querySelector(".texts").innerText;
-
-    if (text === "همه") filterByLevel("A");
-    else if (text === "درجه اول") filterByLevel(1);
-    else if (text === "درجه دوم") filterByLevel(2);
-    else if (text === "درجه سوم") filterByLevel(3);
+    
+    if (text == "همه") filterByLevel("A");
+    else if (text == levelOneOutput.innerText) filterByLevel(1);
+    else if (text == levelTwoOutput.innerText) filterByLevel(2);
+    else if (text == levelThreeOutput.innerText) filterByLevel(3);
   });
 });
 
+let settingButton = document.querySelector("#setting");
+let settingSection = document.querySelector(".settingSection");
 
-let settingButton = document.querySelector('#setting')
-let settingSection = document.querySelector('.settingSection')
+settingButton.addEventListener("click", () => {
+  settingSection.style.display = "inline";
+  settingRenderer();
+});
 
-settingButton .addEventListener('click', () => {
-  settingSection.style.display = 'inline'
-})
+let closeSettingButton = document.querySelector("#closeSettingButton");
 
-let closeSettingButton = document.querySelector('#closeSettingButton')
+closeSettingButton.addEventListener("click", () => {
+  settingSection.style.display = "none";
+});
 
-closeSettingButton.addEventListener('click', () => {
-  settingSection.style.display = 'none'
-})
+settingDoneButton.addEventListener("click", () => {
+  asidRenderer();
+  settingSection.style.display = "none";
+  console.log(file)
+});
+
+
+const profileRenderer = () => {
+  let outputProfile = document.querySelector('#userPhoto')
+  let choseprofile = document.querySelector('#fileInput')
+
+  outputProfile.style.backgroundImage = `url(${choseprofile})`;
+}
+
+let addProfileBtn = document.querySelector('#addUserPhotoBtn')
+
